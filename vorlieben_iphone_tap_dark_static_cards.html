@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vorlieben – Sortieren</title>
+<style>
+:root { color-scheme: dark; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0; padding: 12px;
+  background: #05060a;
+  color: #f5f5f5;
+}
+h1 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.hint {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 14px;
+  color: #c7c7c7;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 900px) {
+  .board { flex-direction: row; }
+}
+.column {
+  background: radial-gradient(circle at top left, #2d1b69, #111320);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.65);
+  flex: 1;
+}
+.column-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.column-body {
+  min-height: 60px;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgba(8,10,20,0.85);
+  border: 1px dashed rgba(255,255,255,0.12);
+}
+.pool-wrapper { margin-top: 16px; }
+.pool-title { font-weight: 600; margin-bottom: 6px; }
+#pool {
+  background: radial-gradient(circle at top left, #263238, #101418);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.65);
+}
+.card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 7px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(148,163,184,0.8);
+  box-shadow: 0 4px 10px rgba(15,23,42,0.9);
+}
+.card:active {
+  transform: scale(0.98);
+  background: linear-gradient(135deg, #1d4ed8, #0f172a);
+  border-color: #60a5fa;
+}
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  background: #0f172a;
+  color: #e5e7eb;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+button:active {
+  transform: translateY(1px);
+  background: #1f2937;
+}
+.footer {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+</style>
+</head>
+<body>
+<h1>✨ Vorlieben sortieren</h1>
+<div class="hint">
+  Auf eine Karte tippen, um sie durch die Kategorien zu schicken:<br>
+  Pool → ❤️ Unbedingt → 😍 Steh ich drauf → 🤔 Situationsabhängig → 😐 Mag ich nicht so → ❌ Geht gar nicht → zurück in den Pool.
+</div>
+
+<div class="board">
+    <div class="column">
+        <div class="column-title">❤️ Unbedingt</div>
+        <div class="column-body" id="c1"></div>
+    </div>
+    <div class="column">
+        <div class="column-title">😍 Steh ich drauf</div>
+        <div class="column-body" id="c2"></div>
+    </div>
+    <div class="column">
+        <div class="column-title">🤔 Situationsabhängig</div>
+        <div class="column-body" id="c3"></div>
+    </div>
+    <div class="column">
+        <div class="column-title">😐 Mag ich nicht so</div>
+        <div class="column-body" id="c4"></div>
+    </div>
+    <div class="column">
+        <div class="column-title">❌ Geht gar nicht</div>
+        <div class="column-body" id="c5"></div>
+    </div>
+</div>
+
+<div class="pool-wrapper">
+  <div class="pool-title">🎴 Alle Vorlieben (Pool)</div>
+  <div id="pool">
+<div class="card" data-state="pool" data-id="0">Ältere</div>
+<div class="card" data-state="pool" data-id="1">Dreier MMF</div>
+<div class="card" data-state="pool" data-id="2">FKK</div>
+<div class="card" data-state="pool" data-id="3">Intimbehaarung</div>
+<div class="card" data-state="pool" data-id="4">Massagen</div>
+<div class="card" data-state="pool" data-id="5">Besondere Orte</div>
+<div class="card" data-state="pool" data-id="6">Blowjob</div>
+<div class="card" data-state="pool" data-id="7">Cuckolding</div>
+<div class="card" data-state="pool" data-id="8">Cunnilingus</div>
+<div class="card" data-state="pool" data-id="9">Fotografieren</div>
+<div class="card" data-state="pool" data-id="10">Frivoles Ausgehen</div>
+<div class="card" data-state="pool" data-id="11">Gangbang</div>
+<div class="card" data-state="pool" data-id="12">Gruppensex</div>
+<div class="card" data-state="pool" data-id="13">Handjob</div>
+<div class="card" data-state="pool" data-id="14">Jüngere</div>
+<div class="card" data-state="pool" data-id="15">Körperbehaarung</div>
+<div class="card" data-state="pool" data-id="16">Korsetts & Corsagen</div>
+<div class="card" data-state="pool" data-id="17">Kuschelsex</div>
+<div class="card" data-state="pool" data-id="18">Mollig</div>
+<div class="card" data-state="pool" data-id="19">Natursekt</div>
+<div class="card" data-state="pool" data-id="20">Normaler Sex</div>
+<div class="card" data-state="pool" data-id="21">Nymphoman</div>
+<div class="card" data-state="pool" data-id="22">Outdoor</div>
+<div class="card" data-state="pool" data-id="23">Pornos</div>
+<div class="card" data-state="pool" data-id="24">Schlank</div>
+<div class="card" data-state="pool" data-id="25">Slow Sex</div>
+<div class="card" data-state="pool" data-id="26">Tantra</div>
+<div class="card" data-state="pool" data-id="27">Tattoos</div>
+<div class="card" data-state="pool" data-id="28">Wifesharing</div>
+<div class="card" data-state="pool" data-id="29">Augen verbinden</div>
+<div class="card" data-state="pool" data-id="30">Bildertausch</div>
+<div class="card" data-state="pool" data-id="31">Bondage, Fesseln</div>
+<div class="card" data-state="pool" data-id="32">Dessous</div>
+<div class="card" data-state="pool" data-id="33">Dreier FFM</div>
+<div class="card" data-state="pool" data-id="34">Exhibitionismus</div>
+<div class="card" data-state="pool" data-id="35">Fetisch</div>
+<div class="card" data-state="pool" data-id="36">Filmen</div>
+<div class="card" data-state="pool" data-id="37">Fußerotik</div>
+<div class="card" data-state="pool" data-id="38">High Heels</div>
+<div class="card" data-state="pool" data-id="39">Intimrasur</div>
+<div class="card" data-state="pool" data-id="40">Kamasutra</div>
+<div class="card" data-state="pool" data-id="41">Nylons</div>
+<div class="card" data-state="pool" data-id="42">Paarsex MFMF</div>
+<div class="card" data-state="pool" data-id="43">Selbstbefriedigung</div>
+<div class="card" data-state="pool" data-id="44">Sexspielzeug</div>
+<div class="card" data-state="pool" data-id="45">Spermaspiele</div>
+<div class="card" data-state="pool" data-id="46">Strapon-Sex</div>
+<div class="card" data-state="pool" data-id="47">Strip</div>
+<div class="card" data-state="pool" data-id="48">Zuschauen</div>
+<div class="card" data-state="pool" data-id="49">Zuschauen lassen</div>
+<div class="card" data-state="pool" data-id="50">Dirty Talk</div>
+<div class="card" data-state="pool" data-id="51">Erotische Chats</div>
+<div class="card" data-state="pool" data-id="52">Harter Sex</div>
+<div class="card" data-state="pool" data-id="53">Intimschmuck</div>
+<div class="card" data-state="pool" data-id="54">Lack, Leder & Latex</div>
+<div class="card" data-state="pool" data-id="55">Piercings</div>
+<div class="card" data-state="pool" data-id="56">Rimming</div>
+<div class="card" data-state="pool" data-id="57">Rollenspiele</div>
+<div class="card" data-state="pool" data-id="58">Squirting</div>
+<div class="card" data-state="pool" data-id="59">Analsex</div>
+<div class="card" data-state="pool" data-id="60">Fisting</div>
+<div class="card" data-state="pool" data-id="61">Küssen</div>
+<div class="card" data-state="pool" data-id="62">SM, BDSM</div>
+<div class="card" data-state="pool" data-id="63">Spanking</div>
+<div class="card" data-state="pool" data-id="64">Telefonsex</div>
+<div class="card" data-state="pool" data-id="65">Webcam</div>
+
+  </div>
+  <button onclick="resetBoard()">Alles zurück in den Pool</button>
+</div>
+
+<div class="footer">
+  Optimiert für iPhone, Dark Mode &amp; Tippen 🌙
+</div>
+
+<script>
+const order = ["pool","c1","c2","c3","c4","c5"];
+
+function getNextState(current) {
+  let idx = order.indexOf(current);
+  if (idx === -1) return "pool";
+  return order[(idx + 1) % order.length];
+}
+
+function moveCard(card, state) {
+  card.dataset.state = state;
+  if (state === "pool") {
+    document.getElementById("pool").appendChild(card);
+  } else {
+    const col = document.getElementById(state);
+    if (col) col.appendChild(card);
+  }
+}
+
+document.addEventListener("click", function(e) {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  const current = card.dataset.state || "pool";
+  const next = getNextState(current);
+  moveCard(card, next);
+});
+
+function resetBoard() {
+  const pool = document.getElementById("pool");
+  document.querySelectorAll(".card").forEach(c => {
+    c.dataset.state = "pool";
+    pool.appendChild(c);
+  });
+}
+</script>
+</body>
+</html>
